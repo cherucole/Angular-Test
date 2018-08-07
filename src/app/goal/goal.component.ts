@@ -14,6 +14,14 @@ export class GoalComponent implements OnInit {
     new Goal (4, "Go have some fun outside the country ", "pending"),
     new Goal (5, "Hit the gym", "lol"),
   ]
+
+  completeGoal(isComplete,index){
+        if (isComplete){
+            this.goals.splice(index,1);
+            }
+            }
+
+
 toogleDetails(index){
   this.goals[index].showstatus=!this.goals[index].showstatus;
 }
