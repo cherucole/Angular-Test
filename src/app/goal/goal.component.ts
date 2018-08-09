@@ -12,7 +12,7 @@ export class GoalComponent implements OnInit {
     new Goal (2, "Learn a new lifeskill", "not achieved", new Date(2018,6,9) ),
     new Goal(3, "Get new windows laptop", "cannot be achived", new Date (2015,4,6)),
     new Goal (4, "Go have some fun outside the country ", "pending", new Date(2016,5,7)),
-    new Goal (5, "Hit the gym", "lol"),
+    new Goal (5, "Hit the gym", "lol", new Date (2018,4,6)),
   ]
 
 
@@ -25,6 +25,14 @@ export class GoalComponent implements OnInit {
             }
             }
           }
+
+          addNewGoal(goal){
+       let goalLength = this.goals.length;
+       goal.id=goalLength+1;
+       goal.completeDate = new Date(goal.completeDate)
+       this.goals.push(goal)
+
+   }
 
 
 toogleDetails(index){

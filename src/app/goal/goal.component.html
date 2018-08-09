@@ -1,10 +1,21 @@
 <h1>My Goals for the year 2018</h1>
 <hr>
-<ul>
-    <div *ngFor='let goal of goals; let i=index'>
-        <li id="{{i}}" appStrikethrough>{{goal.name}} due on {{goal.completeDate|date|uppercase}}</li>
-        <button (click)='toogleDetails(i)'>Show Status</button>
-        <app-goal-details *ngIf="goal.showstatus" [goal]='goal' (isComplete)= 'deleteGoal($event,i)'></app-goal-details>
+<div class="container">
+  <div class="row">
+       <app-goal-form (addGoal)="addNewGoal($event)"></app-goal-form>
+   </div>
+  <div class="row" *ngFor='let goal of goals; let i=index'>
+    <div class="row">
+      <app-goal-form></app-goal-form>
+      <h4 id="{{i}}" appStrikethrough>{{goal.name}} due on {{goal.completeDate|date|uppercase}}</h4>
+      <button (click)='toogleDetails(i)'>Show Status</button>
     </div>
-</ul>
+        <div class="row" *ngIf="goal.showstatus" >
+          <app-goal-details [goal]='goal' (isComplete)= 'deleteGoal($event,i)'></app-goal-details>
+
+        </div>
+      </div>
+
+    </div>
+
 <p *ngIf='goals.length >= 4'>You have too many goals</p>
